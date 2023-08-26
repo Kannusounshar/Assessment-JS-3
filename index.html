@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javascript assessment</title>
+  </head>
+  <body>
+    <script>
+      // 1. concat(): Create a function combineArrays that concatenates an array with strings and an array with numbers..
+
+      // Sample Input:
+
+      // combineArrays(['a', 'b'], [1, 2, 3]);
+
+      // Expected Output:
+
+      //  ['a', 'b', 1, 2, 3]
+
+      function combineArrays(array1, array2) {
+        const combinedArray = [...array1, ...array2];
+        return combinedArray;
+      }
+
+      const result = combineArrays(["a", "b"], [1, 2, 3]);
+      console.log(result); // Output: ['a', 'b', 1, 2, 3]
+
+      //       2. copyWithin(): Create a function copyAndPaste that copies the last two elements of an array and pastes them at the beginning.
+
+      // Sample Input:
+
+      // copyAndPaste([1, 2, 3, 4, 5], 0, 3);
+
+      // Expected Output:
+
+      //  [4, 5, 3, 4, 5]
+
+      function copyAndPaste(array, targetIndex, startIndex) {
+        array.copyWithin(targetIndex, startIndex, startIndex + 2);
+        return array;
+      }
+
+      const inputArray = [1, 2, 3, 4, 5];
+      const result = copyAndPaste(inputArray, 0, 3);
+      console.log(result); // Output: [4, 5, 3, 4, 5]
+
+      //     3. every(): Create a function allEven that checks if all elements in an array are even numbers.
+
+      // Sample Input:
+
+      // allEven([2, 4, 6, 8, 10]);
+
+      // Expected Output:
+
+      // true
+
+      function allEven(array) {
+        return array.every((number) => number % 2 === 0);
+      }
+
+      const inputArray = [2, 4, 6, 8, 10];
+      const result = allEven(inputArray);
+      console.log(result); // Output: true
+
+      // 4. filter(): Create a function filterGreaterThan5 that filters out numbers greater than 5 from an array.
+
+      // Sample Input:
+
+      // filterGreaterThan5([3, 8, 1, 9, 4]);
+
+      // Expected Output:
+
+      //  [8, 9]
+
+      function filterGreaterThan5(array) {
+        return array.filter((number) => number > 5);
+      }
+
+      const inputArray = [3, 8, 1, 9, 4];
+      const result = filterGreaterThan5(inputArray);
+      console.log(result); // Output: [8, 9]
+
+      // 5. flat(): Create a function flattenDeepArray that flattens deeply nested arrays.
+
+      // Sample Input:
+
+      // flattenDeepArray([1, [2, [3, [4]]], 5]);
+
+      // Expected Output:
+
+      //  [1, 2, 3, 4, 5]
+
+      function flattenDeepArray(arr) {
+        return arr.reduce((flatArray, current) => {
+          if (Array.isArray(current)) {
+            return flatArray.concat(flattenDeepArray(current));
+          } else {
+            return flatArray.concat(current);
+          }
+        }, []);
+      }
+
+      const inputArray = [1, [2, [3, [4]]], 5];
+      const result = flattenDeepArray(inputArray);
+      console.log(result); // Output: [1, 2, 3, 4, 5]
+
+      // 6. flatMap(): Create a function convertToLowerCase that converts each string in an array to lowercase and then splits it into characters.
+
+      // Sample Input:
+
+      // convertToLowerCase(['Hello', 'World']);
+
+      // Expected Output:
+
+      //  ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']
+
+      function convertToLowerCase(arr) {
+        return arr.flatMap((str) => str.toLowerCase().split(""));
+      }
+
+      const inputArray = ["Hello", "World"];
+      const result = convertToLowerCase(inputArray);
+      console.log(result); // Output: ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']
+
+      // 7. forEach(): Create a function calculateSquare that calculates the square of each number in an array and prints it.
+
+      // Sample Input:
+
+      // calculateSquare([1, 2, 3, 4, 5]);
+
+      // Expected Output:
+
+      // 1 4 9 16 25
+
+      function calculateSquare(arr) {
+        arr.forEach((number) => {
+          const square = number * number;
+          console.log(square);
+        });
+      }
+
+      const inputArray = [1, 2, 3, 4, 5];
+      calculateSquare(inputArray);
+
+      // Output:
+      // 1
+      // 4
+      // 9
+      // 16
+      // 25
+
+      // 8. indexOf(): Create a function findFirstOccurrence that finds the index of the first occurrence of a given element in an array.
+
+      // Sample Input:
+
+      // findFirstOccurrence(['apple', 'banana', 'cherry', 'apple'], 'apple');
+
+      // Expected Output:
+
+      // 0
+
+      function findFirstOccurrence(arr, element) {
+        return arr.indexOf(element);
+      }
+
+      const inputArray = ["apple", "banana", "cherry", "apple"];
+      const elementToFind = "apple";
+      const result = findFirstOccurrence(inputArray, elementToFind);
+      console.log(result); // Output: 0
+
+      // 9. lastIndexOf(): Create a function findLastOccurrence that finds the index of the last occurrence of a given element in an array.
+
+      // Sample Input:
+
+      // findLastOccurrence([1, 2, 3, 4, 3, 2, 1], 3);
+
+      // Expected Output:
+
+      // 4
+      function findLastOccurrence(arr, element) {
+        return arr.lastIndexOf(element);
+      }
+
+      const inputArray = [1, 2, 3, 4, 3, 2, 1];
+      const elementToFind = 3;
+      const result = findLastOccurrence(inputArray, elementToFind);
+      console.log(result); // Output: 4
+
+      // 10. map(): Create a function calculateCirclesArea that calculates the area of circles with given radii.
+
+      // Sample Input:
+
+      // calculateCirclesArea([1, 2, 3]);
+
+      // Expected Output:
+
+      //  [3.14159, 12.56636, 28.27431]
+      function calculateCirclesArea(radii) {
+        return radii.map((radius) => Math.PI * radius * radius);
+      }
+
+      const inputRadii = [1, 2, 3];
+      const result = calculateCirclesArea(inputRadii);
+      console.log(result); // Output: [3.14159, 12.56636, 28.27431]
+
+      // 11. reduce(): Create a function multiplyArray that multiplies all numbers in an array using the reduce method.
+
+      // Sample Input:
+
+      // multiplyArray([2, 3, 4]);
+
+      // Expected Output:
+
+      // 24
+
+      function multiplyArray(array) {
+        return array.reduce(
+          (accumulator, currentValue) => accumulator * currentValue,
+          1
+        );
+      }
+
+      const inputArray = [2, 3, 4];
+      const result = multiplyArray(inputArray);
+      console.log(result); // Output: 24
+
+      // 12. reduceRight(): Create a function concatenateWords that concatenates strings in an array from right to left.
+
+      // Sample Input:
+
+      // concatenateWords(['Hello', ' ', 'World']);
+
+      // Expected Output:
+
+      // 'World Hello '
+
+      function concatenateWords(array) {
+        return array.reduceRight(
+          (accumulator, currentValue) => accumulator + currentValue,
+          ""
+        );
+      }
+
+      const inputArray = ["Hello", " ", "World"];
+      const result = concatenateWords(inputArray);
+      console.log(result); // Output: 'World Hello '
+
+      // 13. reverse(): Create a function reverseStringArray that reverses the order of characters in an array of strings.
+
+      // Sample Input:
+
+      // reverseStringArray(['apple', 'banana', 'cherry']);
+
+      // Expected Output:
+
+      //  ['elppa', 'ananab', 'yrrehc']
+
+      function reverseStringArray(array) {
+        return array.map((str) => str.split("").reverse().join(""));
+      }
+
+      const inputArray = ["apple", "banana", "cherry"];
+      const result = reverseStringArray(inputArray);
+      console.log(result); // Output: ['elppa', 'ananab', 'yrrehc']
+
+      // 14. slice(): Create a function getMiddleSlice that extracts the middle two elements from an array.
+
+      // Sample Input:
+
+      // getMiddleSlice([1, 2, 3, 4, 5]);
+
+      // Expected Output:
+
+      //  [2, 3]
+      function getMiddleSlice(array) {
+        const middleIndex = Math.floor(array.length / 2);
+        return array.slice(middleIndex - 1, middleIndex + 1);
+      }
+
+      const inputArray = [1, 2, 3, 4, 5];
+      const result = getMiddleSlice(inputArray);
+      console.log(result); // Output: [2, 3]
+
+      // 15. some() : Create a function hasNegativeNumber that checks if an array contains at least one negative number.
+
+      // Sample Input:
+
+      // hasNegativeNumber([1, 2, -3, 4, 5]);
+
+      // Expected Output:
+
+      // true
+
+      function hasNegativeNumber(array) {
+        return array.some((number) => number < 0);
+      }
+
+      const inputArray = [1, 2, -3, 4, 5];
+      const result = hasNegativeNumber(inputArray);
+      console.log(result); // Output: true
+
+      // 16. sort(): Create a function sortDesc that sorts an array of numbers in descending order.
+
+      // Sample Input:
+
+      // sortDesc([3, 1, 4, 2, 5]);
+
+      // Expected Output:
+
+      //  [5, 4, 3, 2, 1]
+
+      function sortDesc(array) {
+        return array.sort((a, b) => b - a);
+      }
+
+      const inputArray = [3, 1, 4, 2, 5];
+      const result = sortDesc(inputArray);
+      console.log(result); // Output: [5, 4, 3, 2, 1]
+
+      // 17. splice(): Create a function replaceElements that replaces elements in an array with new values.
+
+      // Sample Input:
+
+      // replaceElements([1, 2, 3, 4, 5], 1, 3, 6, 7);
+
+      // Expected Output:
+
+      //  [1, 6, 7, 4, 5]
+
+      function replaceElements(array, startIdx, deleteCount, ...newElements) {
+        array.splice(startIdx, deleteCount, ...newElements);
+        return array;
+      }
+
+      const inputArray = [1, 2, 3, 4, 5];
+      const result = replaceElements(inputArray, 1, 3, 6, 7);
+      console.log(result); // Output: [1, 6, 7, 4, 5]
+    </script>
+  </body>
+</html>
